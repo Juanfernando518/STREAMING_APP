@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Actores</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <nav>
+        <h1>ADMIN - Actores</h1>
+        <div>
+            <a href="../admin.html">Volver</a>
+        </div>
+    </nav>
+
+    <section class="formulario">
+        <h2>Agregar Actor</h2>
+
+        <form id="formActor">
+            <input type="text" id="nombreActor" placeholder="Nombre del actor" required>
+            <input type="text" id="paisActor" placeholder="País" required>
+            <input type="date" id="fechaNacimiento" required>
+            <input type="text" id="generoActor" placeholder="Género" required>
+            <input type="file" id="fotoActor" accept="image/*">
+
+            <button type="submit">Guardar Actor</button>
+        </form>
+    </section>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>

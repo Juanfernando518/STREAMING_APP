@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Series</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <nav>
+        <h1>ADMIN - Series</h1>
+        <div>
+            <a href="../admin.html">Volver</a>
+        </div>
+    </nav>
+
+    <section class="formulario">
+        <h2>Agregar Serie</h2>
+
+        <form id="formSerie">
+            <input type="text" id="nombreSerie" placeholder="Nombre de la serie" required>
+
+            <input type="number" id="temporadas" placeholder="Número de temporadas" required>
+
+            <input type="file" id="imagenSerie" accept="image/*" required>
+            <input type="file" id="videoSerie" accept="video/mp4" required>
+
+            <button type="submit">Guardar Serie</button>
+        </form>
+    </section>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>

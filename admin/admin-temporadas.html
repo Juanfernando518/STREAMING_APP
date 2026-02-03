@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Temporadas</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <nav>
+        <h1>ADMIN - Temporadas</h1>
+        <div>
+            <a href="../admin.html">Volver</a>
+        </div>
+    </nav>
+
+    <section class="formulario">
+        <h2>Agregar Temporada</h2>
+
+        <form id="formTemporada">
+            <input type="text" id="nombreSerieTemp" placeholder="Nombre de la serie" required>
+            <input type="number" id="numeroTemporada" placeholder="Número de temporada" required>
+            <input type="number" id="numeroCapitulos" placeholder="Número de capítulos" required>
+
+            <button type="submit">Guardar Temporada</button>
+        </form>
+    </section>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>
