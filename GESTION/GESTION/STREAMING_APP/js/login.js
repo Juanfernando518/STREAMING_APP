@@ -1,4 +1,4 @@
-const pb = new PocketBase("http://127.0.0.1:8090");
+const pb = new PocketBase("https://trifid-kerry-nonunitable.ngrok-free.dev");
 
 async function login() {
   const email = document.getElementById("email").value;
@@ -12,3 +12,4 @@ async function login() {
     alert("Error en login");
   }
 }
+
