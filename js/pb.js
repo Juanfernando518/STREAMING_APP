@@ -1,5 +1,5 @@
 // Inicializar PocketBase
-const pb = new PocketBase('http://127.0.0.1:8090');
+const pb = new PocketBase("https://trifid-kerry-nonunitable.ngrok-free.dev");
 
 // Función ejemplo: obtener todas las películas
 async function cargarPeliculasPB(){
@@ -9,4 +9,5 @@ async function cargarPeliculasPB(){
     } catch(err){
         console.error("Error al cargar películas:", err);
     }
+
 }
