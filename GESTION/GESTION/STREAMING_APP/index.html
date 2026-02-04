@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Streaming App</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <h1>STREAMING APP</h1>
+        <div>
+            <a href="index.html">Inicio</a>
+            <a href="peliculas.html">Películas</a>
+            <a href="series.html">Series</a>
+            <a href="admin.html">Admin</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <h2>Bienvenido a tu plataforma de Streaming</h2>
+        <p>Busca tus películas y series favoritas</p>
+        <input type="text" id="buscador" placeholder="Buscar...">
+    </header>
+
+    <!-- RESULTADOS -->
+    <section class="contenedor" id="resultados">
+        <!-- Aquí se mostrarán las tarjetas dinámicamente -->
+    </section>
+    <script src="https://unpkg.com/pocketbase@latest/dist/pocketbase.min.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+body {
+  background: #111;
+  font-family: Arial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  background: #222;
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  color: white;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: crimson;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background: darkred;
+}
