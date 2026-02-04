@@ -1,4 +1,5 @@
-const pb = new PocketBase("http://127.0.0.1:8090");
+// Conexión actualizada a la URL de ngrok de tu amigo
+const pb = new PocketBase("https://trifid-kerry-nonunitable.ngrok-free.dev");
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -8,29 +9,34 @@ document.addEventListener("DOMContentLoaded", async () => {
   // INDEX - mostrar peliculas y series
   // ======================
   if (contenedor) {
-    const peliculas = await pb.collection("peliculas").getFullList();
-    const series = await pb.collection("series").getFullList();
+    try {
+      const peliculas = await pb.collection("peliculas").getFullList();
+      const series = await pb.collection("series").getFullList();
 
-    const todo = [...peliculas, ...series];
+      const todo = [...peliculas, ...series];
 
-    todo.forEach(item => {
-      const card = document.createElement("div");
-      card.className = "card";
+      todo.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "card";
 
-      const imagenURL = `http://127.0.0.1:8090/api/files/${item.collectionName}/${item.id}/${item.portada}`;
+        // También actualizamos la URL de las imágenes para que usen ngrok
+        const imagenURL = `https://trifid-kerry-nonunitable.ngrok-free.dev/api/files/${item.collectionName}/${item.id}/${item.portada}`;
 
-      card.innerHTML = `
-        <img src="${imagenURL}">
-        <h3>${item.titulo}</h3>
-      `;
+        card.innerHTML = `
+          <img src="${imagenURL}">
+          <h3>${item.titulo}</h3>
+        `;
 
-      card.addEventListener("click", () => {
-        localStorage.setItem("pelicula", JSON.stringify(item));
-        window.location.href = "detalle.html";
+        card.addEventListener("click", () => {
+          localStorage.setItem("pelicula", JSON.stringify(item));
+          window.location.href = "detalle.html";
+        });
+
+        contenedor.appendChild(card);
       });
-
-      contenedor.appendChild(card);
-    });
+    } catch (error) {
+      console.error("Error conectando con PocketBase a través de ngrok:", error);
+    }
   }
 
   // ======================
@@ -47,5 +53,4 @@ document.addEventListener("DOMContentLoaded", async () => {
       video.src = peli.video_url;
     }
   }
-
 });
