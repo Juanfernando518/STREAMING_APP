@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Streaming App</title>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<div class="login-container">
+  <h2>🎬 Streaming App</h2>
+
+  <input type="email" id="email" placeholder="Correo electrónico">
+  <input type="password" id="password" placeholder="Contraseña">
+
+  <button onclick="login()">Iniciar sesión</button>
+  <button onclick="registro()">Registrarse</button>
+
+  <p id="mensaje"></p>
+</div>
+
+<script src="https://unpkg.com/pocketbase/dist/pocketbase.umd.js"></script>
+<script>
+const pb = new PocketBase("http://127.0.0.1:8090");
+
+async function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    await pb.collection("users").authWithPassword(email, password);
+    window.location.href = "index.html";
+  } catch (error) {
+    document.getElementById("mensaje").textContent = "❌ Usuario o contraseña incorrectos";
+  }
+}
+
+async function registro() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    await pb.collection("users").create({
+      email: email,
+      password: password,
+      passwordConfirm: password
+    });
+
+    alert("✅ Usuario registrado correctamente");
+  } catch (error) {
+    document.getElementById("mensaje").textContent = "❌ Error al registrar";
+  }
+}
+</script>
+
+</body>
+</html>
