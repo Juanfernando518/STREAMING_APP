@@ -1,26 +1,27 @@
-// Conexión actualizada a la URL de ngrok de tu amigo
-const pb = new PocketBase("https://trifid-kerry-nonunitable.ngrok-free.dev");
+// Conexión con el parámetro para saltar la advertencia de ngrok
+const pb = new PocketBase(
+  "https://trifid-kerry-nonunitable.ngrok-free.dev?ngrok-skip-browser-warning=1"
+);
 
 document.addEventListener("DOMContentLoaded", async () => {
 
   const contenedor = document.getElementById("resultados");
 
   // ======================
-  // INDEX - mostrar peliculas y series
+  // INDEX - mostrar movies y series
   // ======================
   if (contenedor) {
     try {
-      const peliculas = await pb.collection("peliculas").getFullList();
+      const movies = await pb.collection("movies").getFullList(); 
       const series = await pb.collection("series").getFullList();
 
-      const todo = [...peliculas, ...series];
+      const todo = [...movies, ...series];
 
       todo.forEach(item => {
         const card = document.createElement("div");
         card.className = "card";
 
-        // También actualizamos la URL de las imágenes para que usen ngrok
-        const imagenURL = `https://trifid-kerry-nonunitable.ngrok-free.dev/api/files/${item.collectionName}/${item.id}/${item.portada}`;
+        const imagenURL = `https://trifid-kerry-nonunitable.ngrok-free.dev/api/files/${item.collectionName}/${item.id}/${item.portada}?ngrok-skip-browser-warning=1`;
 
         card.innerHTML = `
           <img src="${imagenURL}">
@@ -28,14 +29,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
 
         card.addEventListener("click", () => {
-          localStorage.setItem("pelicula", JSON.stringify(item));
+          // Guardamos como "movie" para mantener la consistencia
+          localStorage.setItem("movie", JSON.stringify(item));
           window.location.href = "detalle.html";
         });
 
         contenedor.appendChild(card);
       });
     } catch (error) {
-      console.error("Error conectando con PocketBase a través de ngrok:", error);
+      console.error("Error conectando con PocketBase:", error);
     }
   }
 
@@ -46,11 +48,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   const video = document.getElementById("video");
 
   if (titulo && video) {
-    const peli = JSON.parse(localStorage.getItem("pelicula"));
+    // Cambiado de "pelicula" a "movie" para que coincida con lo que guardamos arriba
+    const movieData = JSON.parse(localStorage.getItem("movie"));
 
-    if (peli) {
-      titulo.textContent = peli.titulo;
-      video.src = peli.video_url;
+    if (movieData) {
+      titulo.textContent = movieData.titulo;
+      video.src = movieData.video_url;
     }
   }
 });
