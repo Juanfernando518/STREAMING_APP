@@ -1,7 +1,5 @@
 // Conexión con el parámetro para saltar la advertencia de ngrok
-const pb = new PocketBase(
-  "https://trifid-kerry-nonunitable.ngrok-free.dev?ngrok-skip-browser-warning=1"
-);
+const pb = new PocketBase("https://trifid-kerry-nonunitable.ngrok-free.dev");
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -49,12 +47,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (titulo && video) {
     // Cambiado de "pelicula" a "movie" para que coincida con lo que guardamos arriba
-    const movieData = JSON.parse(localStorage.getItem("movie"));
-
+const pb = new PocketBase("https://trifid-kerry-nonunitable.ngrok-free.dev");
     if (movieData) {
       titulo.textContent = movieData.titulo;
       video.src = movieData.video_url;
     }
   }
 });
+
 
